@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
-const ChildComponent = ({ onChangeEvent }) => {
-  const [getVal, setVal] = useState('');
-  const changeValueHandler = (e) => {
-    onChangeEvent(e.target.value);
-  };
+import HighOrderComponent from './MyContext';
+const ChildComponent = (props) => {
+  const { count, increment, decrement, reset } = props;
   return (
     <div>
-      <h6>Child Component</h6>
-      <input type="text" onChange={changeValueHandler} />
+      <b>Count Value:= {count}</b>
+      <button onClick={increment}>Add</button>
+      <button onClick={decrement}>Remove</button>
+      <button onClick={reset}>Reset</button>
     </div>
   );
 };
-export default ChildComponent;
+
+export default HighOrderComponent(ChildComponent);

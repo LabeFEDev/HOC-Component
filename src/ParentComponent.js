@@ -1,56 +1,15 @@
 import React, { useState } from 'react';
-
-const ParentComponent = () => {
-  const [formData, setFormData] = useState({
-    username: '',
-    email: '',
-    password: '',
-  });
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
+import HighOrderComponent from './MyContext';
+const ParentComponent = (props) => {
+  const { count, increment, decrement, reset } = props;
   return (
     <div>
-      <form>
-        <div>
-          <label htmlFor="username">Username:</label>
-          <input
-            type="text"
-            id="username"
-            name="username"
-            value={formData.username}
-            onChange={handleChange}
-          />
-        </div>
-
-        <div>
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-          />
-        </div>
-        <button type="submit">Login</button>
-      </form>
+      <b>Count Value:= {count}</b>
+      <button onClick={increment}>Add</button>
+      <button onClick={decrement}>Remove</button>
+      <button onClick={reset}>Reset</button>
     </div>
   );
 };
 
-export default ParentComponent;
+export default HighOrderComponent(ParentComponent);
