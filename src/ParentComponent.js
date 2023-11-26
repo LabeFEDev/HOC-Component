@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import HighOrderComponent from './MyContext';
+import React from 'react';
+import CounterComponent from './MyContext';
 const ParentComponent = (props) => {
   const { count, increment, decrement, reset } = props;
   return (
@@ -9,7 +9,7 @@ const ParentComponent = (props) => {
       <button onClick={decrement}>Remove</button>
       <button onClick={reset}>Reset</button>
     </div>
-  );
+  )
 };
 
-export default HighOrderComponent(ParentComponent);
+export default CounterComponent(ParentComponent);

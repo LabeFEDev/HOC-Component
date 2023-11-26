@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 
-const HighOrderComponent = (WrappedComponent) => {
-    const CounterComponent = (initial = 0) => {
-        const [count, setCount] = useState(initial);
+const CounterComponent = (WrappedComponent) => {
+    const CounterComponent = (props) => {
+        const [count, setCount] = useState(0);
         const increment = () => {
             setCount(count + 1);
         }
         const decrement = () => {
-            setCount(count + 1);
+            setCount(count - 1);
         }
         const reset = () => {
-            setCount(count + 1);
+            setCount(0);
         }
         return (
             <div>
@@ -26,4 +26,4 @@ const HighOrderComponent = (WrappedComponent) => {
     return CounterComponent
 }
 
-export default HighOrderComponent;
+export default CounterComponent;
